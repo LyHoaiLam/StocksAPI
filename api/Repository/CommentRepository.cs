@@ -14,7 +14,6 @@ namespace api.Repository {
 
 
         public async Task<Comment?> CreateAsync(Comment commentModel) {
-            // throw new NotImplementedException();
             await _context.Comment.AddAsync(commentModel);
             await _context.SaveChangesAsync();
 
@@ -23,7 +22,6 @@ namespace api.Repository {
 
 
         public async Task<Comment?> DeleteAsync(int id) {
-            // throw new NotImplementedException();
             var commentModel = await _context.Comment.FirstOrDefaultAsync(x => x.Id == id);
             if(commentModel == null) {
                 return null;
@@ -46,7 +44,7 @@ namespace api.Repository {
 
 
         public async Task<Comment?> UpdateAsync(int id, Comment commentModel) {
-            // throw new NotImplementedException();
+            
             var existingComment = await _context.Comment.FindAsync(id);
             if(existingComment == null) {
                 return null;

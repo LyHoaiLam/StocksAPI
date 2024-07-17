@@ -141,3 +141,4 @@ D:\MyProjects\ASP_DotNet\StocksAPI\api\obj\Debug\net8.0\refint\api.dll
 D:\MyProjects\ASP_DotNet\StocksAPI\api\obj\Debug\net8.0\api.pdb
 D:\MyProjects\ASP_DotNet\StocksAPI\api\obj\Debug\net8.0\api.genruntimeconfig.cache
 D:\MyProjects\ASP_DotNet\StocksAPI\api\obj\Debug\net8.0\ref\api.dll
+D:\MyProjects\ASP_DotNet\StocksAPI\api\obj\Debug\net8.0\api.sourcelink.json

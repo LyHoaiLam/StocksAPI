@@ -23,6 +23,7 @@ namespace api.Repository {
 
 
         public async Task<Stock?> DeleteAsync(int id) {
+
             var stockModel = await _context.Stock.FirstOrDefaultAsync(x => x.Id == id);
             if(stockModel == null) {
                 return null;
@@ -36,7 +37,7 @@ namespace api.Repository {
 
 
         public async Task<List<Stock>> GetAllAsync(QueryObject query) {
-            // return await _context.Stock.ToListAsync();
+
             var stock = _context.Stock.Include(c => c.Comment).AsQueryable();
             if(!string.IsNullOrWhiteSpace(query.CompanyName)) {
                 stock = stock.Where(s => s.CompanyName.Contains(query.CompanyName));
@@ -57,24 +58,21 @@ namespace api.Repository {
 
 
         public async Task<Stock?> GetByIdAsync(int id) {
-            // return await _context.Stock.FindAsync(id);
             return await _context.Stock.Include(c => c.Comment).FirstOrDefaultAsync(i => i.Id == id);
         }
 
-        public async Task<Stock?> GetBySymbolAsync(string symbol)
-        {
-            // throw new NotImplementedException();
+        public async Task<Stock?> GetBySymbolAsync(string symbol) {
             return await _context.Stock.FirstOrDefaultAsync(s => s.Symbol == symbol);
 
         }
 
         public Task<bool> StockExists(int id) {
-            // throw new NotImplementedException();
             return _context.Stock.AnyAsync(s => s.Id == id);
         }
 
 
         public async Task<Stock?> UpdateAsync(int id, UpdateStockRequestDto stockDto) {
+            
             var existingStock = await _context.Stock.FirstOrDefaultAsync(x => x.Id == id);
             if(existingStock == null) {
                 return null;
