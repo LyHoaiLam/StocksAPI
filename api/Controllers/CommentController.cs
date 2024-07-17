@@ -53,27 +53,13 @@ namespace api.Controllers {
                 return BadRequest(ModelState);
 
             if(!await _stockRepo.StockExists(stockId)) {
-                return BadRequest("Stock does not exist 9999");
+                return BadRequest("Stock does not exist");
             }
             var commentModel = commentDto.ToCommentFromCreate(stockId);
             await _commentRepo.CreateAsync(commentModel);
 
-            return CreatedAtAction(nameof(GetById), new {id = commentModel}, commentModel.ToCommentDto());
+            return CreatedAtAction(nameof(GetById), new {id = commentModel.Id}, commentModel.ToCommentDto());
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         [HttpPut("{id:int}")]
         // [Route("{id: int}")]
